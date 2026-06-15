@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapeo Legaltech 2026 | Universidad Científica del Sur</title>
+    <style>
+        /* --- VARIABLES Y CONFIGURACIÓN DE COLOR --- */
+        :root {
+            --azul-profundo: #060d1a;
+            --azul-card: #0b1528;
+            --verde-cientifica: #0e7490;
+            --neon-teal: #06b6d4;
+            --neon-glow: rgba(6, 182, 212, 0.2);
+            --gris-fondo: #f8fafc;
+            --gris-texto: #334155;
+            --texto-claro: #94a3b8;
+            --blanco: #ffffff;
+            --suave-borde: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--gris-fondo);
+            color: var(--gris-texto);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- DETALLES DE VIDA / ANIMACIONES --- */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+        }
+
+        .pulse-icon {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: var(--neon-teal);
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulseGlow 2s infinite;
+        }
+
+        /* --- HEADER / MENÚ --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #e0f2fe;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--azul-profundo);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--verde-cientifica);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gris-texto);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-teal);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: radial-gradient(circle at 80% 20%, #112240 0%, var(--azul-profundo) 100%);
+            color: var(--blanco);
+            padding: 100px 0 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Red de fondo simulando nodos de Legaltech */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: linear-gradient(rgba(6, 182, 212, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .hero-tag {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid var(--neon-teal);
+            color: var(--neon-teal);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            color: var(--neon-teal);
+            background: linear-gradient(to right, #06b6d4, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 850px;
+            margin: 0 auto 40px auto;
+            color: var(--texto-claro);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--neon-teal);
+            color: var(--azul-profundo);
+            padding: 16px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 20px var(--neon-glow);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(6, 182, 212, 0.4);
+            background: #22d3ee;
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--texto-claro);
+            color: var(--blanco);
+            padding: 14px 34px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--blanco);
+        }
+
+        /* --- SOCIAL PROOF --- */
+        .social-proof {
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .proof-box {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 1px solid var(--suave-borde);
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .proof-item h3 {
+            font-size: 2.8rem;
+            color: var(--verde-cientifica);
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .proof-item p {
+            font-size: 0.9rem;
+            color: var(--gris-texto);
+            font-weight: 600;
+        }
+
+        .quote-banner {
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px dashed var(--suave-borde);
+            font-style: italic;
+            color: var(--verde-cientifica);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* --- SECCIÓN BASE --- */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--azul-profundo);
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: var(--verde-cientifica);
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        /* --- ¿QUÉ ES EL MAPEO? --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .about-card {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+            border-top: 4px solid var(--verde-cientifica);
+        }
+
+        .about-card h3 {
+            color: var(--azul-profundo);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .transparency-note {
+            grid-column: 1 / -1;
+            background: #fff7ed;
+            border: 1px solid #ffedd5;
+            color: #c2410c;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+        }
+
+        /* --- IDENTIDAD / MISIÓN Y VISIÓN --- */
+        .identity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .identity-card {
+            background: linear-gradient(to right bottom, #ffffff, #f0fdfa);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid #ccfbf1;
+        }
+
+        .identity-card h3 {
+            color: var(--verde-cientifica);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        /* --- COMITÉ DE EXPERTOS --- */
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .expert-card {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid var(--suave-borde);
+            transition: transform 0.3s;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .expert-avatar {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--verde-cientifica), var(--neon-teal));
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(6, 182, 212, 0.2);
+        }
+
+        .expert-card h3 {
+            color: var(--azul-profundo);
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .expert-card p {
+            font-size: 0.88rem;
+            color: var(--gris-texto);
+            font-weight: 500;
+        }
+
+        /* --- EVIDENCIA DE IMPACTO 2025 --- */
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+
+        .evidence-card {
+            background: var(--blanco);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border-left: 5px solid var(--neon-teal);
+        }
+
+        .evidence-card h3 {
+            color: var(--azul-profundo);
+            margin-bottom: 15px;
+        }
+
+        .evidence-card ul {
+            list-style-position: inside;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        .evidence-card li {
+            margin-bottom: 8px;
+        }
+
+        /* --- CATEGORÍAS --- */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background: var(--blanco);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid var(--suave-borde);
+            position: relative;
+        }
+
+        .cat-num {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #f1f5f9;
+            z-index: 1;
+        }
+
+        .category-card h3 {
+            color: var(--azul-profundo);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-card p {
+            font-size: 0.92rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- ALIADOS HISTÓRICOS --- */
+        .aliados-section {
+            background: #ffffff;
+            padding: 60px 0;
+            border-top: 1px solid var(--suave-borde);
+            border-bottom: 1px solid var(--suave-borde);
+        }
+
+        .aliados-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            opacity: 0.75;
+        }
+
+        .aliado-tag {
+            background: #f1f5f9;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- METODOLOGÍA / GOBERNANZA --- */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .timeline-step {
+            background: var(--blanco);
+            padding: 25px 20px;
+            border-radius: 8px;
+            border-top: 3px solid #cbd5e1;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.01);
+        }
+
+        .timeline-step.active {
+            border-top-color: var(--neon-teal);
+            background: #f0fdfa;
+        }
+
+        .step-num {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--verde-cientifica);
+            margin-bottom: 8px;
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: var(--azul-profundo);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .step-desc {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        /* Beneficios */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 60px;
+        }
+
+        .benefit-card {
+            background: var(--blanco);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .benefit-card h3 {
+            color: var(--azul-profundo);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- CAPTACIÓN / FORMULARIO --- */
+        .form-section {
+            background: var(--azul-profundo);
+            color: var(--blanco);
+            position: relative;
+        }
+
+        .form-section .section-title {
+            color: var(--blanco);
+        }
+
+        /* Navegación por Pestañas */
+        .form-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--blanco);
+            padding: 12px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--neon-teal);
+            color: var(--azul-profundo);
+            border-color: var(--neon-teal);
+        }
+
+        .form-wrapper {
+            background: var(--blanco);
+            color: var(--gris-texto);
+            padding: 45px;
+            border-radius: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .dynamic-instruction {
+            background: #ecfeff;
+            border-left: 4px solid var(--neon-teal);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #0891b2;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.92rem;
+            color: var(--azul-profundo);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--suave-borde);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            background: #f8fafc;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--neon-teal);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+        }
+
+        .checkbox-list {
+            margin-top: 10px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .checkbox-row input {
+            width: auto;
+            margin-top: 4px;
+        }
+
+        .upload-container {
+            border: 2px dashed #cbd5e1;
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-container:hover {
+            border-color: var(--neon-teal);
+            background: #ecfeff;
+        }
+
+        .upload-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--azul-profundo);
+            margin-bottom: 4px;
+        }
+
+        .upload-sub {
+            font-size: 0.78rem;
+            color: #64748b;
+        }
+
+        .legal-acceptance {
+            margin: 25px 0;
+            border-top: 1px solid var(--suave-borde);
+            padding-top: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--verde-cientifica);
+            color: var(--blanco);
+            border: none;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(14, 116, 144, 0.3);
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0c5a6f;
+        }
+
+        /* --- RECURSOS DESCARGABLES --- */
+        .resources-layout {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .resource-row {
+            background: var(--blanco);
+            border: 1px solid var(--suave-borde);
+            padding: 20px 30px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .resource-info h4 {
+            color: var(--azul-profundo);
+            font-size: 1.05rem;
+        }
+
+        .btn-download {
+            background: transparent;
+            color: var(--verde-cientifica);
+            border: 2px solid var(--verde-cientifica);
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            transition: all 0.3s;
+        }
+
+        .btn-download:hover {
+            background: var(--verde-cientifica);
+            color: var(--blanco);
+        }
+
+        /* --- PREGUNTAS FRECUENTES (FAQ) --- */
+        .faq-layout {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--blanco);
+            border: 1px solid var(--suave-borde);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 700;
+            color: var(--azul-profundo);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            background: #ffffff;
+            user-select: none;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--gris-texto);
+            font-size: 0.92rem;
+            background: #fafafa;
+        }
+
+        .faq-item.open .faq-answer {
+            padding: 15px 20px 20px 20px;
+            max-height: 200px;
+            border-top: 1px solid var(--suave-borde);
+        }
+
+        /* --- CIERRE DE CONVERSIÓN --- */
+        .conversion-banner {
+            background: radial-gradient(circle at 20% 80%, #112240 0%, var(--azul-profundo) 100%);
+            color: var(--blanco);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .conversion-banner h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #030712;
+            color: var(--texto-claro);
+            padding: 40px 0;
+            font-size: 0.85rem;
+            border-top: 1px solid #111827;
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-flex a {
+            color: var(--neon-teal);
+            text-decoration: none;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.3rem; }
+            .identity-grid, .evidence-grid, .form-grid { grid-template-columns: 1fr; }
+            .resource-row { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .footer-flex { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Universidad Científica del Sur | <span>Iniciativa Tech & Law</span></div>
+            <ul class="nav-links">
+                <li><a href="#que-es">Propósito</a></li>
+                <li><a href="#evidencia">Evidencia 2025</a></li>
+                <li><a href="#categorias">Categorías</a></li>
+                <li><a href="#gobernanza">Metodología</a></li>
+                <li><a href="#postular">Postular</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-tag"><span class="pulse-icon"></span>Convocatoria Regional 2026</div>
+            <h1>Mapeo Legaltech <span>2026</span></h1>
+            <p>Sé parte de la iniciativa que transforma el Derecho en el Perú a través de la innovación, la tecnología y la transformación digital. Visibiliza tus proyectos ante el ecosistema jurídico-tecnológico de la región.</p>
+            <div class="hero-btns">
+                <a href="#postular" class="btn-primary">Postula tu organización</a>
+                <a href="#evidencia" class="btn-secondary">Explorar edición 2025</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF (MÉTRICAS) -->
+    <section class="container social-proof">
+        <div class="proof-box">
+            <div class="proof-grid">
+                <div class="proof-item">
+                    <h3>+24k</h3>
+                    <p>Usuarios Activos en el Ecosistema</p>
+                </div>
+                <div class="proof-item">
+                    <h3>12+</h3>
+                    <p>Grandes Instituciones Mapeadas</p>
+                </div>
+                <div class="proof-item">
+                    <h3>1</h3>
+                    <p>Edición de Trayectoria</p>
+                </div>
+                <div class="proof-item">
+                    <h3>100%</h3>
+                    <p>Enfoque Académico</p>
+                </div>
+            </div>
+            <div class="quote-banner">
+                "Primera y Única Universidad en el país liderando el Mapeo Legal Tech"
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿QUÉ ES EL MAPEO? -->
+    <section id="que-es" class="section container">
+        <h2 class="section-title"><span>Identidad Institucional</span>¿Qué es el Mapeo Legaltech?</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>El Esfuerzo Estratégico</h3>
+                <p>Es un esfuerzo estratégico e interdisciplinario impulsado desde la **Facultad de Derecho y Economía de la Universidad Científica del Sur**. Su propósito es ofrecer una visión detallada, analítica y actualizada del escenario tecnológico aplicado al Derecho en nuestro país, detectando actores clave y oportunidades en los sectores público, privado y académico.</p>
+            </div>
+            <div class="about-card">
+                <h3>¿Qué buscamos mapear?</h3>
+                <p>"Toda solución innovadora que haga uso de la tecnología para coadyuvar en la ejecución de actividades legales, mejorar la eficacia o la eficiencia de procedimientos y actividades jurídicas (automatización, uso de IA, algoritmos de clasificación de información o blockchain)."</p>
+            </div>
+            <div class="transparency-note">
+                <strong>Nota de Transparencia CRO:</strong> Esta publicación tiene fines estrictamente académicos y de difusión. No es un ranking, no constituye un concurso ni supone una validación comercial por parte de las instituciones organizadoras.
+            </div>
+        </div>
+
+        <div class="identity-grid">
+            <div class="identity-card">
+                <h3>Nuestra Misión</h3>
+                <p>Identificar, reconocer y visibilizar a los actores que están transformando verdaderamente el Derecho mediante el uso ético y responsable de la tecnología y la inteligencia artificial en el Perú.</p>
+            </div>
+            <div class="identity-card">
+                <h3>Nuestra Visión</h3>
+                <p>Promover un diálogo crítico acerca del efecto de la tecnología sobre la justicia y la gobernanza, construyendo un ecosistema abierto, inclusivo y altamente confiable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMITE DE EXPERTOS -->
+    <section class="section" style="background-color: #f1f5f9;">
+        <div class="container">
+            <h2 class="section-title"><span>Liderazgo</span>Comité de Expertos</h2>
+            <p style="text-align:center; margin-top: -40px; margin-bottom: 50px; color:#64748b;">Profesionales encargados de revisar los trabajos realizados por el grupo de Voluntariado.</p>
+            <div class="experts-grid">
+                <div class="expert-card">
+                    <div class="expert-avatar">AD</div>
+                    <h3>Andrés Dulanto Tello</h3>
+                    <p>Decano de la Facultad de Derecho & Economía</p>
+                </div>
+                <div class="expert-card">
+                    <div class="expert-avatar">DG</div>
+                    <h3>Dante Guerrero Bareto</h3>
+                    <p>Abogado con enfoque en la intersección del derecho y tecnología</p>
+                </div>
+                <div class="expert-card">
+                    <div class="expert-avatar">KV</div>
+                    <h3>Karol Valencia Jaén</h3>
+                    <p>Abogada Legal Engineer y diseñadora UX</p>
+                </div>
+                <div class="expert-card">
+                    <div class="expert-avatar">KM</div>
+                    <h3>Karol Montes Tapia</h3>
+                    <p>Economista con experiencia en Gestión Pública</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVIDENCIA DE IMPACTO 2025 -->
+    <section id="evidencia" class="section container">
+        <h2 class="section-title"><span>Edición de Evidencia</span>Evidencia del Impacto: Edición 2025</h2>
+        <p style="text-align: center; max-width: 700px; margin: -40px auto 50px auto; color: var(--gris-texto);">El ecosistema ya cuenta con precedentes consolidados. En nuestra primera edición del Mapeo recopilamos casos de éxito de alto impacto que demuestran el potencial de transformación real del sector:</p>
+        
+        <div class="evidence-grid">
+            <div class="evidence-card">
+                <h3>Sector Público Mapeado</h3>
+                <p>Iniciativas líderes gubernamentales como:</p>
+                <ul>
+                    <li><strong>CURIA</strong> (Poder Judicial)</li>
+                    <li><strong>YachAIbot</strong> (PCM)</li>
+                    <li>Sistema de resolución automatizada de <strong>OSITRAN</strong></li>
+                    <li>Herramientas inteligentes en <strong>Indecopi</strong></li>
+                    <li>Modelos de fiscalización satelital con IA en <strong>OSINFOR</strong></li>
+                </ul>
+            </div>
+            <div class="evidence-card" style="border-left-color: var(--verde-cientifica);">
+                <h3>Sector Privado Comprometido</h3>
+                <p>Proyectos de vanguardia tecnológica comercial como:</p>
+                <ul>
+                    <li><strong>Juztina IA</strong></li>
+                    <li>Arquitectura generativa <strong>ROBERT_IA</strong> de Entel</li>
+                    <li>Herramientas integradas como <strong>Case Tracking</strong> (Lemontech)</li>
+                    <li>Soluciones analíticas corporativas avanzadas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORÍAS DE POSTULACIÓN -->
+    <section class="section" style="background-color: #f8fafc; border-top: 1px solid var(--suave-borde);">
+        <div class="container">
+            <h2 class="section-title"><span>Estructura del Ecosistema</span>Categorías de Postulación para la Edición 2026</h2>
+            <p style="text-align:center; margin-top: -40px; margin-bottom: 50px; color:#64748b;">Garantizamos una evaluación técnica adaptada al perfil de cada postulante:</p>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="cat-num">1</div>
+                    <h3>Profesionales e Investigadores</h3>
+                    <p>Especialistas, abogados independientes y académicos con líneas de investigación sólidas en Derecho, tecnología, regulación o inteligencia artificial aplicada.</p>
+                </div>
+                <div class="category-card">
+                    <div class="cat-num">2</div>
+                    <h3>Instituciones Públicas / Privadas</h3>
+                    <p>Entidades del Estado, organismos autónomos u organizaciones privadas que implementan internamente proyectos de modernización, interoperabilidad o gestión digital.</p>
+                </div>
+                <div class="category-card">
+                    <div class="cat-num">3</div>
+                    <h3>Empresas y Firmas Legales</h3>
+                    <p>Compañías corporativas, estudios de abogados y consultoras consolidadas que han desarrollado o implementado plataformas y servicios comerciales de tecnología jurídica.</p>
+                </div>
+                <div class="category-card">
+                    <div class="cat-num">4</div>
+                    <h3>Startups Legaltech</h3>
+                    <p>Iniciativas emergentes de base tecnológica nativa que presentan modelos de negocio escalables, propuestas de valor disruptivas y tracción comercial en el mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RED DE COLABORACIÓN Y ALIADOS -->
+    <section class="aliados-section">
+        <div class="container">
+            <h3 style="text-align: center; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: #64748b; margin-bottom: 35px;">Red de Colaboración y Aliados Históricos</h3>
+            <div class="aliados-grid">
+                <div class="aliado-tag">CMS GRAU</div>
+                <div class="aliado-tag">SUNARP</div>
+                <div class="aliado-tag">ENTEL</div>
+                <div class="aliado-tag">INDECOPI</div>
+                <div class="aliado-tag">JUZTINA.AI</div>
+                <div class="aliado-tag">OEFA</div>
+                <div class="aliado-tag">LEMONTECH</div>
+                <div class="aliado-tag">OSITRAN</div>
+                <div class="aliado-tag">DIEZ CANSECO ABOGADOS</div>
+                <div class="aliado-tag">OSINFOR</div>
+                <div class="aliado-tag">PCM</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOBERNANZA Y PROCESO -->
+    <section id="gobernanza" class="section container">
+        <h2 class="section-title"><span>Gobernanza del Proceso</span>Lineamientos Metodológicos de la Investigación</h2>
+        <p style="text-align: center; margin: -40px 0 40px 0; color: var(--gris-texto);">El Mapeo Legaltech se ejecuta bajo un riguroso estándar metodológico de curaduría de datos y control editorial desarrollado por nuestra facultad:</p>
+        
+        <div class="timeline">
+            <div class="timeline-step active">
+                <div class="step-num">01</div>
+                <div class="step-title">Convocatoria</div>
+                <div class="step-desc">Recepción oficial de formularios y carga de abstracts técnicos.</div>
+            </div>
+            <div class="timeline-step">
+                <div class="step-num">02</div>
+                <div class="step-title">Filtro Técnico</div>
+                <div class="step-desc">Evaluación del cumplimiento de los requisitos mínimos establecidos.</div>
+            </div>
+            <div class="timeline-step">
+                <div class="step-num">03</div>
+                <div class="step-title">Curaduría</div>
+                <div class="step-desc">Supervisión humana especializada para validar el aporte real al Derecho.</div>
+            </div>
+            <div class="timeline-step">
+                <div class="step-num">04</div>
+                <div class="step-title">Sistematización</div>
+                <div class="step-desc">Análisis transversal, entrevistas estructuradas y notas editoriales finales.</div>
+            </div>
+            <div class="timeline-step">
+                <div class="step-num">05</div>
+                <div class="step-title">Co-edición</div>
+                <div class="step-desc">Diagramación estética bajo el estándar institucional e indexación académica.</div>
+            </div>
+            <div class="timeline-step">
+                <div class="step-num">06</div>
+                <div class="step-title">Lanzamiento</div>
+                <div class="step-desc">Publicación oficial en el marco del prestigioso Congreso Tech & Law.</div>
+            </div>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h3>Posicionamiento Regional</h3>
+                <p>Inclusión de marca corporativa, institucional o perfil personal en el documento de referencia y consulta permanente del sector en el Perú.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Networking Estratégico</h3>
+                <p>Conexión y sinergias directas con la red de investigación de la Iniciativa Tech & Law, articulando academia, empresas y Estado.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Divulgación Académica</h3>
+                <p>Espacio de difusión validado por un comité especializado, asegurando rigor científico y visibilidad en repositorios universitarios.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Respaldo Institucional</h3>
+                <p>Exposición de los casos de éxito bajo un entorno de gobernanza, ética y rigor avalado por una Facultad de Derecho acreditada.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO DE CAPTACIÓN REFORZADO -->
+    <section id="postular" class="section form-section">
+        <div class="container">
+            <h2 class="section-title"><span>Módulo de Captación CRO</span>Formulario Oficial de Aplicación</h2>
+            
+            <!-- Pestañas de categoría -->
+            <div class="form-tabs">
+                <button class="tab-btn active" onclick="switchTab('datos')">1. Datos Generales</button>
+                <button class="tab-btn" onclick="switchTab('profesionales')">2. Profesionales</button>
+                <button class="tab-btn" onclick="switchTab('instituciones')">3. Instituciones</button>
+                <button class="tab-btn" onclick="switchTab('empresas')">4. Empresas / Startups</button>
+            </div>
+
+            <div class="form-wrapper">
+                <div id="tab-instruction" class="dynamic-instruction">
+                    Mostrando campos transversales de identificación obligatorios para todos los perfiles de postulación.
+                </div>
+
+                <form action="#" method="POST">
+                    <div class="form-grid">
+                        
+                        <!-- CAMPOS TRANSVERSALES -->
+                        <div class="form-group full-width">
+                            <label for="razon_social">Nombre Completo del Postulante o Razón Social de la Entidad:</label>
+                            <input type="text" id="razon_social" placeholder="Escriba el nombre oficial aquí..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="correo">Correo Electrónico de Contacto:</label>
+                            <input type="email" id="correo" placeholder="ejemplo@organizacion.edu.pe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pais">País de Origen y Ciudad:</label>
+                            <select id="pais" required>
+                                <option value="">Seleccione de la lista...</option>
+                                <option value="peru-lima">Perú - Lima</option>
+                                <option value="peru-provincia">Perú - Otra Provincia</option>
+                                <option value="extranjero">Internacional / Región LATAM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="enlace">Enlace Web Oficial o Perfil Profesional de LinkedIn:</label>
+                            <input type="url" id="enlace" placeholder="https://linkedin.com/in/usuario o url oficial" required>
+                        </div>
+
+                        <!-- CHECKBOXES DE TECNOLOGÍA -->
+                        <div class="form-group full-width">
+                            <label>Área de Enfoque Tecnológico de la Solución Legaltech (Selección Múltiple):</label>
+                            <div class="checkbox-list">
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="tech1">
+                                    <label for="tech1">Inteligencia Artificial Aplicada e IA Generativa Jurídica</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="tech2">
+                                    <label for="tech2">Automatización de Documentos, Flujos de Trabajo y Contratos</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="tech3">
+                                    <label for="tech3">Gestión de Prácticas Legales, ERPs y Analítica de Datos</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="tech4">
+                                    <label for="tech4">Blockchain, Identidad Digital y Contratos Inteligentes</label>
+                                </div>
+                                <div class="checkbox-row">
+                                    <input type="checkbox" id="tech5">
+                                    <label for="tech5">Ciberseguridad, Privacidad y Cumplimiento Normativo Corporativo</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="descripcion">Breve Descripción Técnica de la Solución o Línea de Investigación:</label>
+                            <textarea id="descripcion" rows="5" placeholder="Describa la propuesta de valor, la problemática jurídica que resuelve y la tecnología empleada (Máx. 500 palabras)..." required></textarea>
+                        </div>
+
+                        <!-- CARGA TÉCNICA REQUISITOS DEL PDF -->
+                        <div class="form-group full-width">
+                            <label>Validación de Carga Técnica e Identidad Gráfica</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 5px;">
+                                <div class="upload-container">
+                                    <div class="upload-title">1. Resumen / Abstract</div>
+                                    <div class="upload-sub">PDF (800-1000 pal.) Estructura, métricas y pilotos</div>
+                                </div>
+                                <div class="upload-container">
+                                    <div class="upload-title">2. Artículo u Ensayo</div>
+                                    <div class="upload-sub">PDF (300-800 pal.) Justificación de impacto</div>
+                                </div>
+                            </div>
+                            <div class="upload-container" style="margin-top: 15px;">
+                                <div class="upload-title">3. Componentes Visuales y Kit Gráfico</div>
+                                <div class="upload-sub">Archivo .ZIP con Logo Corporativo (PNG/SVG transparente &ge; 2000px) y fotos del equipo ejecutivo</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- DECLARACIONES LEGALES EXIGIDAS -->
+                    <div class="legal-acceptance">
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="declara1" required>
+                            <label for="declara1">Declaro que toda la información consignada y los documentos adjuntos son verídicos, verificables, actualizados y de autoría propia de la entidad o postulante.</label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="declara2" required>
+                            <label for="declara2">Autorizo expresamente a la Facultad de Derecho y Economía de la Universidad Científica del Sur a utilizar estos recursos e información exclusivamente para fines de edición académica, investigación y difusión pública de la obra.</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">ENVIAR POSTULACIÓN OFICIAL</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIBLIOTECA DE RECURSOS DESCARGABLES -->
+    <section class="section container">
+        <h2 class="section-title"><span>Recursos Descargables</span>Biblioteca de Documentos Oficiales</h2>
+        <div class="resources-layout">
+            <div class="resource-row">
+                <div class="resource-info">
+                    <h4>Mapeo LegalTech Perú 2025 - Libro Completo (Primera Edición)</h4>
+                    <p style="font-size:0.8rem; color:#64748b;">Formato: PDF • Documento Consolidado de Precedentes</p>
+                </div>
+                <a href="#" class="btn-download">Descargar Archivo</a>
+            </div>
+            <div class="resource-row">
+                <div class="resource-info">
+                    <h4>Lineamientos Técnicos y Pautas para el Envío de Información 2026</h4>
+                    <p style="font-size:0.8rem; color:#64748b;">Formato: PDF • Requisitos Formales de Admisión</p>
+                </div>
+                <a href="#" class="btn-download">Descargar Archivo</a>
+            </div>
+            <div class="resource-row">
+                <div class="resource-info">
+                    <h4>Formatos y Modelos Oficiales de Consentimiento de Uso de Datos</h4>
+                    <p style="font-size:0.8rem; color:#64748b;">Formato: DOCX • Declaración Jurada Transversal</p>
+                </div>
+                <a href="#" class="btn-download">Descargar Formato</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="section" style="background-color: #f1f5f9; border-top: 1px solid var(--suave-borde);">
+        <div class="container">
+            <h2 class="section-title"><span>Resolución de Dudas</span>Preguntas Frecuentes (FAQ)</h2>
+            <div class="faq-layout">
+                <div class="faq-item">
+                    <div class="faq-question">¿La postulación o inclusión en la publicación genera algún costo comercial? <span>+</span></div>
+                    <div class="faq-answer">No. La convocatoria tiene un carácter estrictamente académico, de investigación y divulgación científica promovido por la universidad para impulsar el ecosistema legaltech local de forma transparente.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿El Mapeo califica a los proyectos dentro de un ranking o competencia empresarial? <span>+</span></div>
+                    <div class="faq-answer">No. No constituye un concurso ni supone un sello de validación técnica comercial o mercantil. Es una herramienta descriptiva, rigurosa e informativa para visibilizar el avance tecnológico sectorial.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Cómo se garantiza la confidencialidad y gobernanza de la información compartida? <span>+</span></div>
+                    <div class="faq-answer">Toda la documentación técnica se procesa bajo lineamientos éticos estrictos de gobernanza algorítmica y la Ley de Protección de Datos Personales en vigor, dándose uso exclusivo para los fines descritos de la investigación científica.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CIERRE DE CONVERSIÓN final -->
+    <section class="conversion-banner">
+        <div class="container">
+            <h2>Forma parte del ecosistema legal más innovador de la región</h2>
+            <p style="color: var(--texto-claro); max-width: 700px; margin: 0 auto 30px auto;">Únete a los líderes de las firmas, instituciones públicas y startups que están redefiniendo el ejercicio del Derecho mediante el uso ético de la tecnología en el Perú.</p>
+            <a href="#postular" class="btn-primary" style="background-color: var(--blanco); color: var(--azul-profundo); box-shadow: none;">POSTULAR AHORA</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-flex">
+            <div>
+                <p>&copy; 2026 Universidad Científica del Sur. Todos los derechos reservados.</p>
+                <p style="color: #4b5563; font-size: 0.75rem; margin-top: 4px;">Facultad de Derecho y Economía — Comité Académico de la Iniciativa Tech & Law.</p>
+            </div>
+            <div>
+                <p>Canales Oficiales Directos:</p>
+                <p><a href="mailto:dguerrerob@cientifica.edu.pe">dguerrerob@cientifica.edu.pe</a> | <a href="mailto:casleveau28@gmail.com">casleveau28@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVIDAD MEDIANTE JAVASCRIPT -->
+    <script>
+        // Función para cambiar de pestañas en el Formulario dinámicamente
+        function switchTab(tabId) {
+            // Manejo estético visual de botones
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Cambio del texto informativo dinámico simulando la interacción UX del Canvas
+            const instruction = document.getElementById('tab-instruction');
+            if(tabId === 'datos') {
+                instruction.innerText = "Mostrando campos transversales de identificación obligatorios para todos los perfiles de postulación.";
+            } else if(tabId === 'profesionales') {
+                instruction.innerText = "Perfil Investigadores: Habilita el requisito del Artículo Científico original o Ensayo de investigación técnica avanzada.";
+            } else if(tabId === 'instituciones') {
+                instruction.innerText = "Perfil Entidades Gubernamentales: Requiere adjuntar el Resumen Ejecutivo del proyecto enfocado en interoperabilidad o gestión digital.";
+            } else if(tabId === 'empresas') {
+                instruction.innerText = "Perfil Startups/Firmas: Requiere adjuntar la Arquitectura de la Solución comercial, métricas operativas verificables y kit de marca (.ZIP).";
+            }
+        }
+
+        // Sistema interactivo de Acordeón para las FAQ
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                const isOpen = parent.classList.contains('open');
+                
+                // Cierra los demás antes de abrir el actual
+                document.querySelectorAll('.faq-item').forEach(child => child.classList.remove('open'));
+                
+                if (!isOpen) {
+                    parent.classList.add('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
